@@ -1,0 +1,3 @@
+2026-08-25 21:27:50 INFO  [RMI TCP Connection(130)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-25 21:27:56 INFO  [RMI TCP Connection(130)-127.0.0.1] o.s.b.reactor.netty.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-25 21:27:59 INFO  [netty-shutdown] o.s.b.reactor.netty.GracefulShutdown - Graceful shutdown complete

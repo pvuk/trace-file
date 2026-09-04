@@ -1,0 +1,7 @@
+2026-09-02 19:12:38 INFO  [pool-5-thread-1] c.t.f.controller.DashboardController - Stream 0 total: 295248
+2026-09-02 19:12:38 INFO  [pool-5-thread-1] c.t.f.controller.DashboardController - Stream 1 total: 295334
+2026-09-02 19:12:38 INFO  [pool-5-thread-1] c.t.f.controller.DashboardController - Stream 2 total: 295334
+2026-09-02 19:12:38 INFO  [pool-5-thread-1] c.t.f.controller.DashboardController - Stream 3 total: 294677
+2026-09-02 19:12:38 INFO  [pool-5-thread-1] c.t.f.controller.DashboardController - Stream 4 total: 295010
+2026-09-02 19:12:38 INFO  [pool-5-thread-1] c.t.f.controller.DashboardController - Stream 5 total: 295029
+2026-09-02 19:12:38 INFO  [pool-5-thread-1] c.t.f.controller.DashboardController - Stream 6 total: 295045

@@ -1,0 +1,53 @@
+2026-08-31 19:32:00 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:02 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:03 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"lastCandidate":"80484073","elapsed":"0d:00H:25m:30s","eta":"0d:17H:03m:47s","checked":2430196,"type":"global","remaining":97569804}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"lastCandidate":"80484073","elapsed":"0d:00H:25m:30s","eta":"0d:17H:03m:47s","checked":2430196,"type":"global","remaining":97569804}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"lastCandidate":"80484073","elapsed":"0d:00H:25m:30s","eta":"0d:17H:03m:47s","checked":2430196,"type":"global","remaining":97569804}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":354.4,"total":484056,"streamId":0,"diff":"+5316 in last 15s","avgSpeed":316.3764705882353}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":354.4,"total":484056,"streamId":0,"diff":"+5316 in last 15s","avgSpeed":316.3764705882353}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":354.4,"total":484056,"streamId":0,"diff":"+5316 in last 15s","avgSpeed":316.3764705882353}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":355.6,"total":488526,"streamId":1,"diff":"+5334 in last 15s","avgSpeed":319.2980392156863}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":355.6,"total":488526,"streamId":1,"diff":"+5334 in last 15s","avgSpeed":319.2980392156863}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":355.6,"total":488526,"streamId":1,"diff":"+5334 in last 15s","avgSpeed":319.2980392156863}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":349.8,"total":487766,"streamId":2,"diff":"+5247 in last 15s","avgSpeed":318.80130718954246}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":349.8,"total":487766,"streamId":2,"diff":"+5247 in last 15s","avgSpeed":318.80130718954246}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":349.8,"total":487766,"streamId":2,"diff":"+5247 in last 15s","avgSpeed":318.80130718954246}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":355.2,"total":485784,"streamId":3,"diff":"+5328 in last 15s","avgSpeed":317.50588235294117}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":355.2,"total":485784,"streamId":3,"diff":"+5328 in last 15s","avgSpeed":317.50588235294117}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":355.2,"total":485784,"streamId":3,"diff":"+5328 in last 15s","avgSpeed":317.50588235294117}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":353.2,"total":484076,"streamId":4,"diff":"+5298 in last 15s","avgSpeed":316.38954248366014}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":353.2,"total":484076,"streamId":4,"diff":"+5298 in last 15s","avgSpeed":316.38954248366014}
+2026-08-31 19:32:04 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":353.2,"total":484076,"streamId":4,"diff":"+5298 in last 15s","avgSpeed":316.38954248366014}
+2026-08-31 19:32:05 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:06 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:07 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:07 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:08 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:08 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:09 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:09 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:09 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:10 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:10 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:10 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:10 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:10 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:11 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:12 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:13 INFO  [RMI TCP Connection(33)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:13 INFO  [RMI TCP Connection(33)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:13 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:13 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:13 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:14 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:14 INFO  [RMI TCP Connection(33)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:14 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:14 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:14 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:14 INFO  [RMI TCP Connection(33)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:14 INFO  [RMI TCP Connection(33)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:15 INFO  [RMI TCP Connection(33)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:15 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:15 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-08-31 19:32:16 INFO  [RMI TCP Connection(32)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.

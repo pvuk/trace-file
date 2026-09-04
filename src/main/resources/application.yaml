@@ -1,0 +1,78 @@
+spring:
+  application:
+    name: trace-file
+# This registers the SpringApplication MBean so JMX clients can query it.
+    admin:
+     enabled: false
+  jmx:
+    enabled: false
+  datasource:
+#Use Service Name = XEPDB1 (not SID xe) if your user was created in the pluggable DB.
+    url: jdbc:oracle:thin:@localhost:1521/XEPDB1
+    username: NEXTLEVEL_FILE
+    password: admin
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true		
+    database-platform: org.hibernate.dialect.OracleDialect # ✅ Match dialect to Hibernate version Hibernate 6 → OracleDialect, Hibernate 5 → Oracle12cDialect
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 1000 #groups inserts/updates into batches.
+#Hibernate sorts statements to maximize batching.
+        order_inserts: true
+        order_updates: true
+
+  webflux:
+    base-path: /trace-file #✅ set context path in Spring WebFlux (Netty)0
+
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    #username: ${MAIL_USERNAME} #Refer config_project.md for more
+    #password: ${MAIL_PASSWORD} #rdgt gdrx ekmc qmdq
+    username: udaykiran4java@gmail.com #Refer config_project.md for more
+    password: rdgt gdrx ekmc qmdq
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+
+server:
+  port: 8081
+#  servlet:
+#    context-path: /trace-file # works only with Spring MVC (Tomcat/Jetty): prefixed all APIs with /trace-file
+
+#enable the trace endpoint
+#---
+#This gives you /actuator/httptrace which logs the last 100 HTTP requests.
+#You can redirect these logs to a file using logging configuration.
+#---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, trace
+  logging:
+    level:
+      org.springframework.boot: INFO
+      com.trace.file: DEBUG
+      org.springframework: WARN
+
+
+#📌 Quick recap:
+#On Windows, Netty always runs with NIO.
+#Adding reactor.netty.native: false in application.yml ensures Netty doesn’t even attempt native detection.
+#You’ll still have full functionality (HTTP, WebFlux, WebSockets, gRPC, SSL/TLS), just without Linux‑specific optimizations.
+reactor:
+ netty:
+  native:false
