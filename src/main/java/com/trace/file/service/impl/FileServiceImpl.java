@@ -1,5 +1,6 @@
 package com.trace.file.service.impl;
 
+import java.nio.ByteBuffer;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,9 @@ import com.trace.file.entity.Notification;
 import com.trace.file.notification.reactive.NotificationPublisher;
 import com.trace.file.repository.FileUploadRepository;
 import com.trace.file.repository.NotificationRepository;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 /**
  * 
  * @author PULIPATI VENKATA UDAYKIRAN
@@ -35,13 +39,13 @@ public class FileServiceImpl {
 		this.publisher = publisher;
 	}
 
-    public Long saveFile(FileUpload file) {
-        FileUpload saved = fileRepo.save(file);
-        return saved.getId();
-    }
+	public Mono<Long> saveFile(FileUpload file) {
+	    return fileRepo.save(file)   // returns Mono<FileUpload>
+	            .map(FileUpload::getId); // transform to Mono<Long>
+	}
     
     public String updateFile(FileUpload file) {
-		UUID idempotencyKey = file.getIdempotencyKey();
+		byte[] idempotencyKey = file.getIdempotencyKey();
     	Optional<FileUpload> existing = fileRepo.findByIdempotencyKey(idempotencyKey);
         if (existing.isPresent()) {
             return "File already exist."; // return same response if retried
@@ -69,11 +73,13 @@ public class FileServiceImpl {
         return notifRepo.findByAssignedToAndReadFalse(checker);
     }
 
-    public void markAsRead(Long notifId) {
-        notifRepo.findById(notifId).ifPresent(n -> {
-            n.setRead(true);
-            notifRepo.save(n);
-        });
+    public Mono<Void> markAsRead(Long notifId) {
+        return notifRepo.findById(notifId)   // returns Mono<Notification>
+            .flatMap(n -> {
+                n.setRead(true);
+                return notifRepo.save(n);    // returns Mono<Notification>
+            })
+            .then(); // convert to Mono<Void> (completion signal)
     }
 
 	public boolean existsByFileNameAndAssignedTo(String fileName, String assignedTo) {
@@ -81,8 +87,15 @@ public class FileServiceImpl {
 		return false;
 	}
 	
-
-    public List<FileUpload> getAllFiles() {
-        return fileRepo.findAll();
-    }
+	/**
+	 * Flux<FileUpload> represents a stream of FileUpload objects that can be consumed asynchronously.
+	 * 
+	 * @author PULIPATI VENKATA UDAYKIRAN
+	 * @since Tuesday 15-September-2026 17:57:53
+	 * @return
+	 */
+	public Mono<List<FileUpload>> getAllFiles() {
+	    return fileRepo.findAll()       // Flux<FileUpload>
+	                   .collectList();  // Mono<List<FileUpload>>
+	}
 }

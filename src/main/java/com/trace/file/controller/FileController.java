@@ -1,31 +1,20 @@
 package com.trace.file.controller;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.codec.multipart.FilePart;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trace.file.entity.FileUpload;
@@ -49,7 +38,7 @@ public class FileController {
     @Autowired private FileServiceImpl service;
     @Autowired private NotificationPublisher publisher;
     
-    @Autowired private JdbcTemplate jdbcTemplate;
+    @Autowired private R2dbcEntityTemplate r2dbcEntityTemplate;
     
     /**
      * New Request. Uploads file and metadata in one request.</br>
@@ -87,57 +76,62 @@ public class FileController {
      * @param fileUpload
      * @return
      */
-    @PostMapping("/files/uploadWithMetadata")
-    public Mono<ResponseEntity<Map<String, Object>>> uploadWithMetadata(
-            @RequestHeader("Idempotency-Key") UUID idempotencyKey,
-            @RequestPart("file") FilePart filePart,
-            @RequestPart("metadata") FileUpload fileUpload) {
- 
-    	String filename = filePart.filename();
-		if (filename == null || filename.isEmpty()) {
-			// Return an error response if the filename is missing or empty
-			return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
-					.body(Map.of("error", "Please attach File. Filename is missing or empty")));
-		}
-    	
-        try {
-            Path uploadDir = Paths.get("C:/uploads");
-
-            if (!Files.exists(uploadDir)) {
-                Files.createDirectories(uploadDir);
-            }
-
-            Path target = uploadDir.resolve(filename);
-
-            // Save file asynchronously, then metadata
-            return filePart.transferTo(target)
-                    .then(Mono.fromSupplier(() -> {
-                        // Save file record
-                    	fileUpload.setFileName(filename);
-                    	fileUpload.setFilePath(uploadDir.toFile().getPath());
-                        fileUpload.setIdempotencyKey(idempotencyKey);
-                        Long fileId = service.saveFile(fileUpload);
-                        
-                        fileUpload.setId(fileId);
-                        // Save metadata record
-                        String metadataResult = service.updateFile(fileUpload);
-
-                        Map<String, Object> response = Map.of(
-                                "message", "File and metadata saved successfully",
-                                "fileId", fileId.toString(),
-                                "metadataResult", metadataResult,
-                                "savedFile", fileUpload
-                        );
-                        return ResponseEntity.ok(response);
-                    }))
-                    .onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                            .body(Map.of("error", "Error saving file/metadata: " + e.getMessage()))));
-
-        } catch (Exception e) {
-            return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Error: " + e.getMessage())));
-        }
-    }
+//    @PostMapping("/files/uploadWithMetadata")
+//    public Mono<ResponseEntity<Map<String, Object>>> uploadWithMetadata(
+//            @RequestHeader("Idempotency-Key") UUID idempotencyKey,
+//            @RequestPart("file") FilePart filePart,
+//            @RequestPart("metadata") FileUpload fileUpload) {
+// 
+//    	String filename = filePart.filename();
+//		if (filename == null || filename.isEmpty()) {
+//			// Return an error response if the filename is missing or empty
+//			return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//					.body(Map.of("error", "Please attach File. Filename is missing or empty")));
+//		}
+//    	
+//        try {
+//            Path uploadDir = Paths.get("C:/uploads");
+//
+//            if (!Files.exists(uploadDir)) {
+//                Files.createDirectories(uploadDir);
+//            }
+//
+//            Path target = uploadDir.resolve(filename);
+//
+//            // Save file asynchronously, then metadata
+//            return filePart.transferTo(target)
+//                    .then(Mono.fromSupplier(() -> {
+//                        String metadataResult = null;
+//                        
+//                        // Save file record
+//                    	fileUpload.setFileName(filename);
+//                    	fileUpload.setFilePath(uploadDir.toFile().getPath());
+//                        fileUpload.setIdempotencyKey(idempotencyKey);
+//                        Mono<Long> monoFile = service.saveFile(fileUpload);
+//                        
+//						monoFile.subscribe(fileId -> {
+//							// After saving the file, save metadata
+//							fileUpload.setId(fileId);
+//							metadataResult = service.updateFile(fileUpload);
+//						});
+//                        Long fileId = fileUpload.getId();
+//
+//                        Map<String, Object> response = Map.of(
+//                                "message", "File and metadata saved successfully",
+//                                "fileId", fileId.toString(),
+//                                "metadataResult", metadataResult,
+//                                "savedFile", fileUpload
+//                        );
+//                        return ResponseEntity.ok(response);
+//                    }))
+//                    .onErrorResume(e -> Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                            .body(Map.of("error", "Error saving file/metadata: " + e.getMessage()))));
+//
+//        } catch (Exception e) {
+//            return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body(Map.of("error", "Error: " + e.getMessage())));
+//        }
+//    }
 
     /**
      * Old Request. Deprecated.
@@ -229,18 +223,35 @@ public class FileController {
      * @return
      */
     @GetMapping("/checker/notifications/archive/search")
-    public List<Notification> searchArchived(
+    public Flux<Notification> searchArchived(
             @RequestParam LocalDate start,
             @RequestParam LocalDate end) {
-        return jdbcTemplate.query(
-            "SELECT * FROM notification_archive WHERE created_at BETWEEN ? AND ?",
-            new Object[]{start, end},
-            new BeanPropertyRowMapper<>(Notification.class)
-        );
+
+    	return r2dbcEntityTemplate.getDatabaseClient()
+            .sql("SELECT * FROM notification_archive WHERE created_at BETWEEN :start AND :end")
+            .bind("start", start)
+            .bind("end", end)
+            .map((row, metadata) -> Notification.builder()
+                .id(row.get("id", Long.class))
+                .fileId(row.get("file_id", Long.class))
+                .assignedTo(row.get("assigned_to", String.class))
+                .assignedBy(row.get("assigned_by", String.class))
+                .read(row.get("read", Boolean.class))
+                .createdAt(row.get("created_at", LocalDateTime.class))
+                .build()
+            )
+            .all();   // ✅ correct terminal operator
     }
     
+    /**
+     * Endpoint streams results reactively instead of blocking.
+     * 
+     * @author PULIPATI VENKATA UDAYKIRAN
+     * @since Tuesday 15-September-2026 17:58:35
+     * @return
+     */
     @GetMapping("/maker/getAllFiles")
-    public List<FileUpload> getAllFiles() {
+    public Mono<List<FileUpload>> getAllFiles() {
         return service.getAllFiles();
     }
 

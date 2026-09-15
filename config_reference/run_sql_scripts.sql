@@ -1,3 +1,7 @@
+-- The unique constraint on idempotencyKey needs to be created directly in Oracle — via a migration script (Flyway/Liquibase) or manually:
+>ALTER TABLE FILE_UPLOAD ADD CONSTRAINT uq_file_upload_idempotency_key UNIQUE (IDEMPOTENCY_KEY);
+
+
 1. Indexing
 For fast lookups (checker unread count, file assignments):
 

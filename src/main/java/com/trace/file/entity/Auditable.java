@@ -1,33 +1,27 @@
 package com.trace.file.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.relational.core.mapping.Column;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
-
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable {
 	@CreatedBy
-	@Column(name = "CREATED_BY")
+	@Column("CREATED_BY")
 	private String createdBy;
 
 	@CreatedDate
-	@Column(name = "CREATED_ON")
-	private Date createdOn;
+	@Column("CREATED_ON")
+	private LocalDateTime createdOn;
 	
 	@LastModifiedBy
-	@Column(name = "UPDATED_BY")
+	@Column("UPDATED_BY")
 	private String updatedBy;
 	
 	@LastModifiedDate
-	@Column(name = "UDPATED_ON")
-	private Date udpatedOn;
+	@Column("UDPATED_ON")
+	private LocalDateTime udpatedOn;
 }
