@@ -1,0 +1,19 @@
+groups:
+  - name: sse_webflux_rules
+    interval: 30s
+    rules:
+      # 🔹 Precompute throughput (events/sec)
+      - record: job:sse_events_per_second:rate1m
+        expr: rate(spring_webflux_sse_events_total[1m])
+
+      # 🔹 Precompute active connections
+      - record: job:sse_active_connections:sum
+        expr: sum(spring_webflux_active_connections)
+
+      # 🔹 Precompute latency (p95)
+      - record: job:http_request_latency:p95
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(http_server_requests_seconds_bucket{uri="/trace-file/**"}[1m])) by (le)
+          ) * 1000

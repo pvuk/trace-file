@@ -32,11 +32,34 @@
 		<spring-cloud.version>2025.1.2</spring-cloud.version>-->
 	</properties>
 	<dependencies>
+		<!-- Actuator for metrics -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		
+		<!-- Micrometer Prometheus registry -->
+	    <dependency>
+	        <groupId>io.micrometer</groupId>
+	        <artifactId>micrometer-registry-prometheus</artifactId>
+	    </dependency>
+	
+	    <!-- OpenTelemetry API + SDK -->
+	    <dependency>
+	        <groupId>io.opentelemetry</groupId>
+	        <artifactId>opentelemetry-api</artifactId>
+	    </dependency>
+	    <dependency>
+	        <groupId>io.opentelemetry</groupId>
+	        <artifactId>opentelemetry-sdk</artifactId>
+	    </dependency>
+	
+	    <!-- Spring Boot starter for OpenTelemetry -->
+	    <dependency>
+	        <groupId>io.opentelemetry.instrumentation</groupId>
+	        <artifactId>opentelemetry-spring-boot-starter</artifactId>
+	    </dependency>
+	    
 	    <!-- Spring Web -->
 	    <!--<dependency>
 	        <groupId>org.springframework.boot</groupId>
@@ -134,9 +157,16 @@
 			<scope>test</scope>
 		</dependency>-->
 	</dependencies>
-	<!--<dependencyManagement>
+	<dependencyManagement>
 		<dependencies>
-			<dependency>
+	        <dependency>
+	            <groupId>io.opentelemetry.instrumentation</groupId>
+	            <artifactId>opentelemetry-instrumentation-bom</artifactId>
+	            <version>2.30.0</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+			<!--<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>${spring-cloud.version}</version>
@@ -149,9 +179,9 @@
 				<version>${spring-ai.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
+			</dependency>-->
 		</dependencies>
-	</dependencyManagement>-->
+	</dependencyManagement>
 
 	<build>
 		<plugins>

@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'spring-boot'
+    metrics_path: '/trace-file/actuator/prometheus'   # ← add the base-path prefix
+    static_configs:
+      - targets: ['host.docker.internal:8081']
+
+rule_files:
+  - "rules.yml"

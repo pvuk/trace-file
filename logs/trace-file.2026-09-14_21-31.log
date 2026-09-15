@@ -1,0 +1,148 @@
+2026-09-14 21:31:06 ERROR [OkHttp http://localhost:4317/...] i.o.e.otlp.internal.GrpcExporter - Failed to export spans. The request could not be executed.
+java.io.IOException: Required SETTINGS preface not received
+	at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+	at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+	at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: Required SETTINGS preface not received
+		... 8 common frames omitted
+2026-09-14 21:31:08 ERROR [OkHttp http://localhost:4317/...] i.o.e.otlp.internal.GrpcExporter - Failed to export metrics. The request could not be executed.
+java.io.IOException: Required SETTINGS preface not received
+	at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+	at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+	at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: Required SETTINGS preface not received
+		... 8 common frames omitted
+2026-09-14 21:31:08 WARN  [OkHttp http://localhost:4317/...] i.o.s.m.export.PeriodicMetricReader - Exporter failed
+2026-09-14 21:31:16 ERROR [OkHttp http://localhost:4317/...] i.o.e.otlp.internal.GrpcExporter - Failed to export spans. The request could not be executed.
+java.io.IOException: java.net.SocketException: An established connection was aborted by the software in your host machine
+	at io.opentelemetry.exporter.internal.marshal.ProtoSerializer.close(ProtoSerializer.java:288)
+	at io.opentelemetry.exporter.internal.marshal.Marshaler.writeBinaryTo(Marshaler.java:24)
+	at io.opentelemetry.exporter.internal.marshal.Marshaler$2.writeMessage(Marshaler.java:57)
+	at io.opentelemetry.exporter.sender.okhttp.internal.GrpcRequestBody.writeTo(GrpcRequestBody.java:69)
+	at okhttp3.internal.http.CallServerInterceptor.intercept(CallServerInterceptor.kt:66)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:34)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:98)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:72)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at io.opentelemetry.exporter.sender.okhttp.internal.RetryInterceptor.intercept(RetryInterceptor.java:96)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:232)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:580)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: Required SETTINGS preface not received
+		at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+		at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+		at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+		at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+		at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+		... 3 common frames omitted
+	Suppressed: java.io.IOException: Required SETTINGS preface not received
+		at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+		at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+		at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+		at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+		at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+		... 3 common frames omitted
+Caused by: java.net.SocketException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:54)
+	at java.base/sun.nio.ch.NioSocketImpl.tryWrite(NioSocketImpl.java:394)
+	at java.base/sun.nio.ch.NioSocketImpl.implWrite(NioSocketImpl.java:410)
+	at java.base/sun.nio.ch.NioSocketImpl.write(NioSocketImpl.java:440)
+	at java.base/sun.nio.ch.NioSocketImpl$2.write(NioSocketImpl.java:819)
+	at java.base/java.net.Socket$SocketOutputStream.write(Socket.java:1195)
+	at okio.internal.DefaultSocket$SocketSink.write(DefaultSocket.kt:62)
+	at okio.RealBufferedSink.emitCompleteSegments(RealBufferedSink.kt:256)
+	at okio.RealBufferedSink.write(RealBufferedSink.kt:147)
+	at okhttp3.internal.http2.Http2Writer.dataFrame(Http2Writer.kt:194)
+	at okhttp3.internal.http2.Http2Writer.data(Http2Writer.kt:176)
+	at okhttp3.internal.http2.Http2Connection.writeData(Http2Connection.kt:334)
+	at okhttp3.internal.http2.Http2Stream$FramingSink.emitFrame(Http2Stream.kt:620)
+	at okhttp3.internal.http2.Http2Stream$FramingSink.write(Http2Stream.kt:586)
+	at okio.ForwardingSink.write(ForwardingSink.kt:29)
+	at okhttp3.internal.connection.Exchange$RequestBodySink.write(Exchange.kt:277)
+	at okio.RealBufferedSink.emitCompleteSegments(RealBufferedSink.kt:256)
+	at okio.RealBufferedSink$outputStream$1.write(RealBufferedSink.kt:118)
+	at io.opentelemetry.exporter.internal.marshal.CodedOutputStream$OutputStreamEncoder.doFlush(CodedOutputStream.java:632)
+	at io.opentelemetry.exporter.internal.marshal.CodedOutputStream$OutputStreamEncoder.flush(CodedOutputStream.java:588)
+	at io.opentelemetry.exporter.internal.marshal.ProtoSerializer.close(ProtoSerializer.java:282)
+	... 20 common frames omitted
+2026-09-14 21:31:31 ERROR [OkHttp http://localhost:4317/...] i.o.e.otlp.internal.GrpcExporter - Failed to export spans. The request could not be executed.
+java.io.IOException: Required SETTINGS preface not received
+	at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+	at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+	at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: Required SETTINGS preface not received
+		... 8 common frames omitted
+2026-09-14 21:31:32 ERROR [OkHttp http://localhost:4317/...] i.o.e.otlp.internal.GrpcExporter - Failed to export logs. The request could not be executed.
+java.io.IOException: Required SETTINGS preface not received
+	at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+	at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+	at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.io.IOException: Required SETTINGS preface not received
+		... 8 common frames omitted
+2026-09-14 21:31:46 ERROR [OkHttp http://localhost:4317/...] i.o.e.otlp.internal.GrpcExporter - Failed to export spans. The request could not be executed.
+java.io.IOException: java.io.IOException: Required SETTINGS preface not received
+	at io.opentelemetry.exporter.internal.marshal.ProtoSerializer.close(ProtoSerializer.java:288)
+	at io.opentelemetry.exporter.internal.marshal.Marshaler.writeBinaryTo(Marshaler.java:24)
+	at io.opentelemetry.exporter.internal.marshal.Marshaler$2.writeMessage(Marshaler.java:57)
+	at io.opentelemetry.exporter.sender.okhttp.internal.GrpcRequestBody.writeTo(GrpcRequestBody.java:69)
+	at okhttp3.internal.http.CallServerInterceptor.intercept(CallServerInterceptor.kt:66)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.kt:34)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.kt:98)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.kt:83)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.kt:72)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at io.opentelemetry.exporter.sender.okhttp.internal.RetryInterceptor.intercept(RetryInterceptor.java:96)
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.kt:332)
+	at okhttp3.internal.connection.RealCall.getResponseWithInterceptorChain$okhttp(RealCall.kt:232)
+	at okhttp3.internal.connection.RealCall$AsyncCall.run(RealCall.kt:580)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: [CIRCULAR REFERENCE: java.io.IOException: Required SETTINGS preface not received]
+	Suppressed: java.io.IOException: Required SETTINGS preface not received
+		at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+		at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+		at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+		at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+		at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+		... 3 common frames omitted
+Caused by: java.io.IOException: Required SETTINGS preface not received
+	at okhttp3.internal.http2.Http2Reader.readConnectionPreface(Http2Reader.kt:76)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:628)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable.invoke(Http2Connection.kt:619)
+	at okhttp3.internal.concurrent.TaskQueue$execute$1.runOnce(TaskQueue.kt:112)
+	at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:81)
+	... 3 common frames omitted

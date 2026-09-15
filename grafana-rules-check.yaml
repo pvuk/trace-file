@@ -1,0 +1,68 @@
+apiVersion: 1
+
+#🔧 How It Works
+#Latency Alert → triggers if p95 latency > 500ms for more than 1 minute.
+#
+#Connections Alert → triggers if active SSE connections < 1 for more than 1 minute.
+#
+#Alerts can be routed to Grafana Alerting → email, Slack, PagerDuty, etc.
+
+groups:
+  - orgId: 1 
+  - name: sse_webflux_alerts
+    folder: General
+    interval: 30s
+    rules:
+      # 🔹 Alert if latency (p95) exceeds 500ms
+      - uid: latency_high
+        title: High SSE Latency
+        condition: C
+        data:
+          - refId: A
+            datasourceUid: prometheus
+            model:
+              expr: job:http_request_latency:p95
+              interval: 30s
+              format: time_series
+        conditions:
+          - evaluator:
+              type: gt
+              params: [500]
+            operator:
+              type: and
+            reducer:
+              type: last
+            query:
+              refId: A
+        for: 1m
+        annotations:
+          summary: "SSE latency is above 500ms (p95)"
+        labels:
+          severity: warning
+
+      # 🔹 Alert if active connections drop below 1
+      - uid: connections_low
+        title: Low Active Connections
+        condition: C
+        data:
+          - refId: B
+            datasourceUid: prometheus
+            model:
+              expr: job:sse_active_connections:sum
+              interval: 30s
+              format: time_series
+        conditions:
+          - evaluator:
+              type: lt
+              params: [1]
+            operator:
+              type: and
+            reducer:
+              type: last
+            query:
+              refId: B
+        for: 1m
+        annotations:
+          summary: "Active SSE connections dropped to zero"
+        labels:
+          severity: critical

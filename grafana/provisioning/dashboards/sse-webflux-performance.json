@@ -1,0 +1,63 @@
+{
+  "id": null,
+  "title": "SSE / WebFlux Performance",
+  "tags": ["webflux", "sse", "reactive"],
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Active SSE Connections",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "sum(spring_webflux_active_connections)",
+          "legendFormat": "connections"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+    },
+    {
+      "type": "graph",
+      "title": "Throughput (Events/sec)",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "rate(spring_webflux_sse_events_total[1m])",
+          "legendFormat": "events/sec"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 }
+    },
+    {
+      "type": "graph",
+      "title": "Latency (ms)",
+      "datasource": "Prometheus",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{uri=\"/trace-file/**\"}[1m])) by (le)) * 1000",
+          "legendFormat": "p95 latency"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 16, "w": 12, "h": 8 }
+    },
+    {
+      "type": "logs",
+      "title": "SSE Logs",
+      "datasource": "Loki",
+      "targets": [
+        {
+          "expr": "{app=\"trace-file\"} |= \"SSE\""
+        }
+      ],
+      "gridPos": { "x": 0, "y": 24, "w": 12, "h": 8 }
+    },
+    {
+      "type": "traces",
+      "title": "Reactive Stream Traces",
+      "datasource": "Tempo",
+      "gridPos": { "x": 0, "y": 32, "w": 12, "h": 8 }
+    }
+  ]
+}

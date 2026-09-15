@@ -1,0 +1,21 @@
+apiVersion: 1
+
+contactPoints:
+  - orgId: 1
+    name: email-alerts
+    receivers:
+      - uid: email_receiver
+        type: email
+        settings:
+          addresses: "udaykiran4java@gmail.com"
+          singleEmail: true
+
+  - orgId: 1
+    name: slack-alerts
+    receivers:
+      - uid: slack_receiver
+        type: slack
+        settings:
+          url: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+          username: "Grafana Alerts"
+          icon_emoji: ":warning:"
