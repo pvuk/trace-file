@@ -157,3 +157,8 @@ Real‑world analogy? → “Partitioning is like keeping monthly invoices in se
 🎯 Interview Soundbite
 "For high-volume workloads, I combine batching, partitioning, and indexing. Batching reduces insert overhead, partitioning splits data into manageable chunks so queries only scan relevant partitions, and indexing speeds up lookups inside each partition. Old partitions can be archived or dropped, which keeps active queries fast while still allowing historical access when needed."
 ----------------------------
+
+--Check Columns in Table
+SELECT column_name
+FROM user_tab_columns
+WHERE table_name = 'NOTIFICATION';

@@ -193,9 +193,22 @@ public class FileController {
 
     
     @GetMapping("/checker/notifications/history/{checker}")
-    public ResponseEntity<List<Notification>> getNotifications(@PathVariable String checker) {
-        return ResponseEntity.ok(service.getUnreadNotifications(checker));
+    public Mono<List<Notification>> getNotifications(@PathVariable String checker) {
+        return service.getUnreadNotifications(checker);
     }
+    
+    /**
+     * This avoids collecting all results into memory and keeps the processing fully reactive.
+     * 
+     * @author PULIPATI VENKATA UDAYKIRAN
+     * @since Wednesday 16-September-2026 14:13:06
+     * @param checker
+     * @return
+     */
+//    @GetMapping("/checker/notifications/history/{checker}")
+//    public Flux<Notification> getUnreadNotifications(String checker) {
+//        return notifRepo.findByAssignedToAndReadFalse(checker);
+//    }
 
     @PutMapping("/notifications/{id}/read")
     public ResponseEntity<Void> markRead(@PathVariable Long id) {
@@ -244,8 +257,6 @@ public class FileController {
     }
     
     /**
-     * Endpoint streams results reactively instead of blocking.
-     * 
      * @author PULIPATI VENKATA UDAYKIRAN
      * @since Tuesday 15-September-2026 17:58:35
      * @return

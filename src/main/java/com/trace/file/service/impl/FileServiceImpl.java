@@ -69,8 +69,8 @@ public class FileServiceImpl {
 		return "File Metadata Saved Successfully with ID: " + fileID;
     }
 
-    public List<Notification> getUnreadNotifications(String checker) {
-        return notifRepo.findByAssignedToAndReadFalse(checker);
+    public Mono<List<Notification>> getUnreadNotifications(String checker) {
+        return notifRepo.findByAssignedToAndReadFalse(checker).collectList();
     }
 
     public Mono<Void> markAsRead(Long notifId) {

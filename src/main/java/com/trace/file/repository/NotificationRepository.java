@@ -1,7 +1,5 @@
 package com.trace.file.repository;
 
-import java.util.List;
-
 import org.springframework.data.r2dbc.repository.Modifying;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.trace.file.entity.Notification;
 
+import reactor.core.publisher.Flux;
+
 /**
  * 
  * @author PULIPATI VENKATA UDAYKIRAN
@@ -17,7 +17,8 @@ import com.trace.file.entity.Notification;
  */
 @Repository
 public interface NotificationRepository extends ReactiveCrudRepository<Notification, Long> {
-    List<Notification> findByAssignedToAndReadFalse(String assignedTo);
+    
+	Flux<Notification> findByAssignedToAndReadFalse(String assignedTo);
     
     /**
      * Bulk Operations

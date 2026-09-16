@@ -9,7 +9,7 @@ otelcol.receiver.otlp "default" {
 
 otelcol.exporter.otlp "tempo" {
   client {
-    endpoint = "tempo:3200"   // or tempo:4317 if Tempo's OTLP grpc receiver, use whatever your tempo.yaml exposes
+    endpoint = "tempo:4317"
     tls {
       insecure = true
     }
@@ -19,7 +19,7 @@ otelcol.exporter.otlp "tempo" {
 // ===== LOGS: tail trace-file.log and ship to Loki =====
 local.file_match "trace_file_logs" {
   path_targets = [
-    { __path__ = "/var/log/trace-file/trace-file.log" }
+    { __path__ = "/var/log/trace-file/trace-file.log" },
   ]
 }
 
@@ -37,7 +37,7 @@ loki.write "default" {
 // ===== METRICS: scrape the app's actuator/prometheus endpoint =====
 prometheus.scrape "trace_file_app" {
   targets = [
-    { __address__ = "host.docker.internal:8081" }
+    { __address__ = "host.docker.internal:8081" },
   ]
   metrics_path = "/trace-file/actuator/prometheus"
   forward_to   = [prometheus.remote_write.default.receiver]

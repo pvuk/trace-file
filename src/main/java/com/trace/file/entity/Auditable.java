@@ -22,6 +22,6 @@ public abstract class Auditable {
 	private String updatedBy;
 	
 	@LastModifiedDate
-	@Column("UDPATED_ON")
-	private LocalDateTime udpatedOn;
+	@Column("UPDATED_ON")
+	private LocalDateTime updatedOn;
 }
