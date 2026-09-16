@@ -6,7 +6,7 @@ bash
 cd path/to/trace-file
 
 # Build and start all services in the background
-docker-compose up -d
+>docker-compose up -d
 
 -----------------------------------------------------
 # ✅ What Happens

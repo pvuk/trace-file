@@ -1,8 +1,0 @@
-2026-09-01 21:18:01 INFO  [main] o.s.b.reactor.netty.NettyWebServer - Netty started on port 8081 (http)
-2026-09-01 21:18:01 INFO  [main] com.trace.file.TraceFileApplication - Started TraceFileApplication in 19.598 seconds (process running for 23.024)
-2026-09-01 21:18:45 INFO  [pool-6-thread-1] c.t.f.controller.DashboardController - Publishing Event: {"lastCandidate":"60005926","elapsed":"0d:00H:00m:15s","eta":"0d:14H:05m:58s","checked":29543,"type":"global","remaining":99970457}
-2026-09-01 21:18:45 INFO  [reactor-http-nio-2] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":393.0,"total":5895,"streamId":0,"diff":"+5895 in last 15s","avgSpeed":393.0}
-2026-09-01 21:18:45 INFO  [reactor-http-nio-2] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":397.3333333333333,"total":5960,"streamId":1,"diff":"+5960 in last 15s","avgSpeed":397.3333333333333}
-2026-09-01 21:18:45 INFO  [reactor-http-nio-2] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":401.8666666666667,"total":6028,"streamId":2,"diff":"+6028 in last 15s","avgSpeed":401.8666666666667}
-2026-09-01 21:18:45 INFO  [reactor-http-nio-2] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":398.6,"total":5979,"streamId":3,"diff":"+5979 in last 15s","avgSpeed":398.6}
-2026-09-01 21:18:45 INFO  [reactor-http-nio-2] c.t.f.controller.DashboardController - Publishing Event: {"streamSpeed":396.1333333333333,"total":5942,"streamId":4,"diff":"+5942 in last 15s","avgSpeed":396.1333333333333}

@@ -1,3 +1,0 @@
-2026-08-25 21:28:06 INFO  [RMI TCP Connection(130)-127.0.0.1] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'traceFile'
-2026-08-25 21:28:06 INFO  [RMI TCP Connection(130)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2026-08-25 21:28:06 INFO  [RMI TCP Connection(130)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
